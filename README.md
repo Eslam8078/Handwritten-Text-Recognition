@@ -1,42 +1,96 @@
-# A Handwritten Text Recognition System
+# Handwritten Text Recognition
 
-Our Graduation Project For Helwan University 2024
+A **handwritten text recognition (HTR)** system developed as a graduation project at Helwan University. The application combines a React frontend with a Flask backend and a trained recognition model to convert handwritten images into digital text.
 
-## Installation
+## Key Features
 
-### Frontend
+- Upload handwritten images from the web interface
+- Image preprocessing with OpenCV
+- Handwritten text inference through the recognition model
+- Confidence score returned by the backend
+- Post-processing and text correction with SymSpell
+- REST endpoint for image-to-text conversion
+- React frontend connected to the Flask API
 
-1. Open your terminal or command prompt.
-2. Navigate to the `frontend` directory of the project:
-    ```
-    cd path/to/frontend
-    ```
-    Replace `path/to/frontend` with the actual path to your frontend directory.
-3. Install the required Node.js packages by running:
-    ```
-    npm install
-    ```
-4. Once the installation is complete, start the frontend server with:
-    ```
-    npm run start
-    ```
+## Tech Stack
+
+**Frontend**
+- React 18
+- Axios
+- Bootstrap / React-Bootstrap
+- React Icons
+
+**Backend & ML**
+- Python
+- Flask
+- TensorFlow
+- OpenCV
+- NumPy
+- SymSpell
+
+## Architecture
+
+```text
+React Frontend
+      ↓
+Flask REST API
+      ↓
+Image Preprocessing
+      ↓
+HTR Model Inference
+      ↓
+Text Correction
+      ↓
+Recognized Text + Confidence
+```
+
+## Project Structure
+
+```text
+Handwritten-Text-Recognition/
+├── frontend/
+│   └── src/
+├── backend/
+│   ├── flask/
+│   │   ├── app.py
+│   │   ├── htr_module.py
+│   │   └── model/
+│   └── requirements.txt
+└── README.md
+```
+
+## Run Locally
 
 ### Backend
 
-1. Open another terminal or command prompt window.
-2. Navigate to the `backend` directory of the project:
-    ```
-    cd path/to/backend
-    ```
-    Replace `path/to/backend` with the actual path to your backend directory.
-3. Then navigate to the `flask` directory:
-    ```
-    cd flask
-    ```
-4. Run the Flask backend server by executing:
-    ```
-    python app.py
-    ```
+```bash
+cd backend
+pip install -r requirements.txt
+cd flask
+python app.py
+```
 
+### Frontend
 
+Open another terminal:
 
+```bash
+cd frontend
+npm install
+npm start
+```
+
+The frontend runs on **http://localhost:3000** by default.
+
+## API
+
+```http
+POST /convert
+```
+
+Upload an image using the `image` form field. The API returns recognized text, confidence, and corrected text.
+
+## Author
+
+**Eslam Ayman**  
+Helwan University — 2024
